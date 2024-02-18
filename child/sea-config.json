@@ -1,0 +1,4 @@
+{
+  "main": "child/child.js",
+  "output": "child/child.blob"
+}
