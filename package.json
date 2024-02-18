@@ -7,11 +7,11 @@
     "dev": "nodemon server.ts",
     "copy":"node -e \"require('fs').copyFileSync(process.execPath, 'hello.exe')\"",
     "sign":"./signtool.exe remove /s hello.exe",
-    "build:base": "tsc && esbuild base/base.js --bundle --platform=node --minify --outfile=base.js",
+    "build:base": "esbuild base/base.ts --bundle --platform=node  --outfile=/base/base.js",
 
     "gen:base":"node --experimental-sea-config base/sea-config.json ",
     "gen:child":"node --experimental-sea-config child/sea-config.json ",
-    "inject:base":"npx postject hello.exe NODE_SEA_BLOB base/base.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2",
+    "inject:base":"npx postject hello.exe NODE_SEA_BLOB base/base.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2 --overwrite",
     "inject:child":"npx postject hello.exe NODE_SEA_BLOB child/child.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2 --overwrite"
   },
   "author": "",
@@ -23,7 +23,7 @@
   "devDependencies": {
     "@types/express": "^4.17.17",
     "@types/node": "^18.15.7",
-    "nohellon": "^2.0.22",
+    "nodemon": "^2.0.22",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.2"
   }
